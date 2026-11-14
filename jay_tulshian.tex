@@ -1,7 +1,7 @@
 %-------------------------
 % Resume in Latex
-% Author : Jay Tulshian
-% Based off of: https://github.com/jakegut/resume (Jake Gutierrez)
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
 % License : MIT
 %------------------------
 
@@ -20,8 +20,21 @@
 \usepackage{tabularx}
 \input{glyphtounicode}
 
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhf{} % clear all header and footer fields
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -46,6 +59,15 @@
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
+
+% PDF metadata read by ATS parsers
+\hypersetup{
+  pdftitle={Jay Tulshian - Site Reliability / Platform Engineer Resume},
+  pdfauthor={Jay Tulshian},
+  pdfsubject={Site Reliability Engineer, Platform Engineer, DevOps Engineer},
+  pdfkeywords={Site Reliability Engineering, SRE, Platform Engineering, DevOps, Kubernetes, GitOps, ArgoCD, Argo Workflows, Helm, CI/CD, GitLab CI, Infrastructure as Code, Terraform, Ansible, Python, Go, Linux, Prometheus, Grafana, Observability, Kafka, ClickHouse, Elasticsearch, DNS, Load Balancing, High Availability, AWS, Azure}
+}
+
 
 %-------------------------
 % Custom commands
@@ -89,6 +111,7 @@
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \begin{document}
 
 %----------HEADING----------
@@ -104,7 +127,7 @@
 \section{Summary}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-    Platform and Site Reliability Engineer with 3+ years of experience building deployment automation and infrastructure for large-scale distributed systems. At F5, works on F5 Distributed Cloud (SDC), a SaaS application security and networking platform running 200+ services across 50+ Kubernetes clusters worldwide. Built the configuration and orchestration automation that reduced environment bring-up from months to weeks; currently part of the LMA team, building the platform's next-generation observability infrastructure.
+    Site Reliability and Platform Engineer with 3+ years of experience in Kubernetes, GitOps, CI/CD and infrastructure automation. At F5, built the platform that deploys F5 Distributed Cloud (SDC), a SaaS security and networking product running 200+ microservices on 50+ Kubernetes clusters, and now scale its 10+ TB/day observability stack.
     }}
  \end{itemize}
 
@@ -114,23 +137,23 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {F5}{June 2024 -- Present}
-      {Software Development Engineer II -- Platform / SRE, Distributed Cloud}{Hyderabad, India}
+      {F5}{Jun 2024 -- Present}
+      {Software Development Engineer II -- Site Reliability Engineering}{Hyderabad, India}
       \resumeItemListStart
-        \resumeItem{Member of the \textbf{LMA} team within SRE, responsible for the logging and observability backbone (Kafka, ClickHouse, Elasticsearch, Prometheus) on which the entire platform depends. Designing and deploying new clusters on industry-standard tooling (Helm, ArgoCD, Vault, cert-manager) in place of custom in-house systems, and integrating them with the existing stack}
-        \resumeItem{Designed the internal DNS architecture for the new LMA clusters, with authoritative CoreDNS name servers, NS delegation between clusters, MetalLB and NGINX Plus, providing cross-cluster name resolution and failover with no external dependencies}
-        \resumeItem{Designed and built \textbf{Model V2}, a Python rendering engine partly inspired by Kustomize and tailored to the SDC architecture, which merges configuration from multiple repositories into a single source of truth for \textbf{200+ services}. Led the migration of every environment's configuration into it with identical deployed state and zero disruption}
-        \resumeItem{Built the environment automation on top of Model V2, reducing bring-up time from \textbf{8 months to about 2 weeks} and growing the fleet from \textbf{4 to 7+ environments}, including isolated private environments for customers. Release MRs are now generated automatically, eliminating a major source of configuration drift}
-        \resumeItem{Bring up new PoPs from bare-metal servers to running applications using Ansible, ArgoCD and Argo Workflows, with exposure to VLANs, VIPs, subnets, route tables, bonding, switches, routers and BGP}
-        \resumeItem{Provide on-call support for non-production environments; perform cluster and release upgrades and automated much of the upgrade workflow with Argo Workflows}
+        \resumeItem{Build and operate the \textbf{LMA (Logging, Monitoring and Alerting)} platform on Kafka, ClickHouse and Elasticsearch, ingesting \textbf{10+ TB/day} (\textbf{7B+ messages/day}); scaling it onto standalone bare-metal Kubernetes clusters with Helm and ArgoCD}
+        \resumeItem{Designed and built \textbf{Model V2}, replacing per-environment repositories that were hand-synced and drifted apart with a single versioned definition of SDC; each environment pulls a release branch, applies its overrides and renders config for \textbf{200+ microservices} across GC, RE, LMA and DNS clusters}
+        \resumeItem{Automated release MR generation on Model V2, cutting release preparation from \textbf{2 weeks of manual diffing to 1 day} and eliminating the human errors behind config-drift production issues}
+        \resumeItem{Migrated every environment onto Model V2 and automated provisioning, cutting bring-up from \textbf{8 months to 2 weeks} and scaling from \textbf{4 to 7+ environments} with \textbf{zero downtime}; enabled private deployments for customers needing isolation}
+        \resumeItem{Bring up new PoPs from bare metal to production with Ansible, ArgoCD and Argo Workflows across a \textbf{30+ PoP} edge network, and automated staged cluster and release upgrades; exposure to VLANs, routing, bonding and BGP}
+        \resumeItem{Delivered \textbf{750+ merged MRs} across \textbf{35+ repositories}, including GitLab CI/CD guardrails (image validation, drift checks, merge trains) and Prometheus monitoring for \textbf{10+ services}; on-call for non-production environments}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Being Zero}{Dec 2022 -- April 2024}
-      {Software Development Engineer (Intern $\rightarrow$ Full-time)}{Hyderabad, India}
+      {Being Zero}{Dec 2022 -- Apr 2024}
+      {Software Development Engineer}{Hyderabad, India}
       \resumeItemListStart
-        \resumeItem{Developed backend services for mentorpick.com, a coding platform serving 10,000+ students daily (Node.js, TypeScript, MongoDB, MySQL, Redis, AWS)}
-        \resumeItem{Authored 70+ competitive programming problems and mentored students in data structures and algorithms}
+        \resumeItem{Built backend services and REST APIs for mentorpick.com, serving \textbf{10,000+ daily users} (Node.js, TypeScript, MongoDB, MySQL, Redis, AWS), including RBAC, SES email automation and full-text search optimization}
+        \resumeItem{Authored \textbf{70+ competitive programming problems} and mentored students in data structures and algorithms}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -140,10 +163,9 @@
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
-          {\textbf{Helm + ArgoCD + CUE Deployment Architecture} $|$ \emph{CUE, Helm, ArgoCD, OCI}}{2026}
+          {\textbf{GitOps Deployment Architecture} $|$ \emph{Kubernetes, Helm, ArgoCD, CUE}}{2026}
           \resumeItemListStart
-            \resumeItem{Designed a next-generation, type-safe deployment architecture in which services publish versioned Helm charts and CUE schemas, and each environment is promoted through a single version pin}
-            \resumeItem{Schema validation in CI catches invalid configuration before it reaches a cluster}
+            \resumeItem{Created a type-safe deployment model where services publish versioned Helm charts and CUE schemas, environments are promoted with \textbf{one version pin}, and CI schema validation blocks invalid config}
           \resumeItemListEnd
     \resumeSubHeadingListEnd
 
@@ -152,9 +174,10 @@
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: Go, Python, Bash, CUE, TypeScript, C++, SQL} \\
-     \textbf{Platform}{: Kubernetes, ArgoCD, Argo Workflows, Helm, Ansible, Docker, GitLab CI, AWS, Azure, Terraform} \\
-     \textbf{Observability}{: Prometheus, Alertmanager, Loki, Grafana}
+     \textbf{Languages}{: Python, Go, Bash, SQL, TypeScript, C++, CUE} \\
+     \textbf{Infrastructure}{: Kubernetes, Docker, Helm, Linux, Ansible, Terraform, AWS, Azure} \\
+     \textbf{CI/CD \& GitOps}{: ArgoCD, Argo Workflows, GitLab CI/CD, Git} \\
+     \textbf{Observability \& Data}{: Prometheus, Grafana, Loki, Alertmanager, Kafka, ClickHouse, Elasticsearch}
     }}
  \end{itemize}
 
@@ -163,17 +186,18 @@
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {MLR Institute of Technology}{Hyderabad, India}
-      {B.Tech in Computer Science -- CGPA: 8.15}{2019 -- 2023}
+      {MLR Institute of Technology}{Jun 2019 -- May 2023}
+      {Bachelor of Technology in Computer Science -- CGPA: 8.15}{Hyderabad, India}
   \resumeSubHeadingListEnd
 
 
 %-----------ACHIEVEMENTS-----------
 \section{Achievements}
-  \resumeSubHeadingListStart
-    \resumeItem{\textbf{ACM-ICPC Regionalist}: Rank 78, Mathura-Kanpur 2022; Rank 346, Amritapuri 2020}
-    \resumeItem{\textbf{CodeChef}: 4-Star, max rating 1816}
-  \resumeSubHeadingListEnd
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{ACM-ICPC Regionalist}: Rank 78, Mathura-Kanpur 2022; Rank 346, Amritapuri 2020. \textbf{CodeChef}: 4-Star
+    }}
+ \end{itemize}
 
 %-------------------------------------------
 \end{document}
