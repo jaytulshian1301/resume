@@ -1,0 +1,179 @@
+%-------------------------
+% Resume in Latex
+% Author : Jay Tulshian
+% Based off of: https://github.com/jakegut/resume (Jake Gutierrez)
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Jay Tulshian} \\ \vspace{1pt}
+    \small +91-7672053155 $|$ \href{mailto:jaytulshian13@gmail.com}{\underline{jaytulshian13@gmail.com}} $|$
+    \href{https://linkedin.com/in/jaytulshian}{\underline{linkedin.com/in/jaytulshian}} $|$
+    \href{https://github.com/jaytulshian1301}{\underline{github.com/jaytulshian1301}}
+\end{center}
+
+
+%-----------SUMMARY-----------
+\section{Summary}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    Platform and Site Reliability Engineer with 3+ years of experience building deployment automation and infrastructure for large-scale distributed systems. At F5, works on F5 Distributed Cloud (SDC), a SaaS application security and networking platform running 200+ services across 50+ Kubernetes clusters worldwide. Built the configuration and orchestration automation that reduced environment bring-up from months to weeks; currently part of the LMA team, building the platform's next-generation observability infrastructure.
+    }}
+ \end{itemize}
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {F5}{June 2024 -- Present}
+      {Software Development Engineer II -- Platform / SRE, Distributed Cloud}{Hyderabad, India}
+      \resumeItemListStart
+        \resumeItem{Member of the \textbf{LMA} team within SRE, responsible for the logging and observability backbone (Kafka, ClickHouse, Elasticsearch, Prometheus) on which the entire platform depends. Designing and deploying new clusters on industry-standard tooling (Helm, ArgoCD, Vault, cert-manager) in place of custom in-house systems, and integrating them with the existing stack}
+        \resumeItem{Designed the internal DNS architecture for the new LMA clusters, with authoritative CoreDNS name servers, NS delegation between clusters, MetalLB and NGINX Plus, providing cross-cluster name resolution and failover with no external dependencies}
+        \resumeItem{Designed and built \textbf{Model V2}, a Python rendering engine partly inspired by Kustomize and tailored to the SDC architecture, which merges configuration from multiple repositories into a single source of truth for \textbf{200+ services}. Led the migration of every environment's configuration into it with identical deployed state and zero disruption}
+        \resumeItem{Built the environment automation on top of Model V2, reducing bring-up time from \textbf{8 months to about 2 weeks} and growing the fleet from \textbf{4 to 7+ environments}, including isolated private environments for customers. Release MRs are now generated automatically, eliminating a major source of configuration drift}
+        \resumeItem{Bring up new PoPs from bare-metal servers to running applications using Ansible, ArgoCD and Argo Workflows, with exposure to VLANs, VIPs, subnets, route tables, bonding, switches, routers and BGP}
+        \resumeItem{Provide on-call support for non-production environments; perform cluster and release upgrades and automated much of the upgrade workflow with Argo Workflows}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Being Zero}{Dec 2022 -- April 2024}
+      {Software Development Engineer (Intern $\rightarrow$ Full-time)}{Hyderabad, India}
+      \resumeItemListStart
+        \resumeItem{Developed backend services for mentorpick.com, a coding platform serving 10,000+ students daily (Node.js, TypeScript, MongoDB, MySQL, Redis, AWS)}
+        \resumeItem{Authored 70+ competitive programming problems and mentored students in data structures and algorithms}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Helm + ArgoCD + CUE Deployment Architecture} $|$ \emph{CUE, Helm, ArgoCD, OCI}}{2026}
+          \resumeItemListStart
+            \resumeItem{Designed a next-generation, type-safe deployment architecture in which services publish versioned Helm charts and CUE schemas, and each environment is promoted through a single version pin}
+            \resumeItem{Schema validation in CI catches invalid configuration before it reaches a cluster}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Go, Python, Bash, CUE, TypeScript, C++, SQL} \\
+     \textbf{Platform}{: Kubernetes, ArgoCD, Argo Workflows, Helm, Ansible, Docker, GitLab CI, AWS, Azure, Terraform} \\
+     \textbf{Observability}{: Prometheus, Alertmanager, Loki, Grafana}
+    }}
+ \end{itemize}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {MLR Institute of Technology}{Hyderabad, India}
+      {B.Tech in Computer Science -- CGPA: 8.15}{2019 -- 2023}
+  \resumeSubHeadingListEnd
+
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements}
+  \resumeSubHeadingListStart
+    \resumeItem{\textbf{ACM-ICPC Regionalist}: Rank 78, Mathura-Kanpur 2022; Rank 346, Amritapuri 2020}
+    \resumeItem{\textbf{CodeChef}: 4-Star, max rating 1816}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}
